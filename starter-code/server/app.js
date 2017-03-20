@@ -27,8 +27,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
+//---------- Debugging Error socket hang up -------------
+// app.use((req,res,next)=>{
+//   req.socket.on("error",(error)=>{
+//     console.log(error);
+//   });
+//
+//   res.socket.on("error",(error)=>{
+//     console.log(error);
+//   });
+// });
+//--------------------------------------------------------
+
 const index = require('./routes/index');
+const journalApi =require('./routes/api/journal-entries');
 app.use('/', index);
+app.use('/api', journalApi);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
