@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 var JournalService = (function () {
     function JournalService(myHttp) {
@@ -19,6 +19,18 @@ var JournalService = (function () {
         return this.myHttp.get(this.BASE_URL + "/api/journal-entries")
             .toPromise()
             .then(function (apiResponse) { return apiResponse.json(); });
+    };
+    JournalService.prototype.getEntry = function (id) {
+        return this.myHttp.get(this.BASE_URL + "/api/journal-entries/" + id)
+            .toPromise()
+            .then(function (apiResult) { return apiResult.json(); });
+    };
+    JournalService.prototype.createEntry = function (entryInfo) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = { headers: headers };
+        return this.myHttp.post(this.BASE_URL + "/api/journal-entries", entryInfo, options)
+            .toPromise()
+            .then(function (apiResult) { return apiResult.json(); });
     };
     return JournalService;
 }());

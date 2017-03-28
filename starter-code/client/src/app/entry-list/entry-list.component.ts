@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+// import { Router} from '@angular/router';
 import { JournalService } from '../journal.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class EntryListComponent implements OnInit {
   ngOnInit() {
     this.myJournalService.getEntries()
     .then((entriesList)=>{
-
+      // console.log(entriesList);
+      this.entries = entriesList;
     })
     .catch((err)=>{
       this.errorMessage='There was an error. Try Again later.'

@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+// allows different domains to access your API.
+const cors         = require('cors');
 
 mongoose.connect('mongodb://localhost/journal-development');
 
@@ -27,20 +29,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
-//---------- Debugging Error socket hang up -------------
-// app.use((req,res,next)=>{
-//   req.socket.on("error",(error)=>{
-//     console.log(error);
-//   });
-//
-//   res.socket.on("error",(error)=>{
-//     console.log(error);
-//   });
-// });
-//--------------------------------------------------------
+//--------- CORS -----------
+app.use(cors());
 
 const index = require('./routes/index');
-const journalApi =require('./routes/api/journal-entries');
+const journalApi = require('./routes/api/journal-entries');
 app.use('/', index);
 app.use('/api', journalApi);
 

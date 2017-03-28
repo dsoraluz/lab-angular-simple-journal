@@ -7,10 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EntryListComponent } from './entry-list/entry-list.component';
+import { EntryDetailsComponent } from './entry-details/entry-details.component';
 var routes = [
     {
         path: '',
         component: EntryListComponent
+    },
+    {
+        path: 'journal-entries/:id',
+        component: EntryDetailsComponent
     },
     {
         path: '**',

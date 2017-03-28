@@ -5,12 +5,12 @@
   {{ errorMessage }}
 </div>
 
-<!-- <div>
-  <div class="entry-list" *ngFo="let oneEntry of entries">
+<div>
+  <div class="entry-list" *ngFor="let oneEntry of entries">
     <h3> {{ oneEntry.title }} </h3>
     <h2> {{ oneEntry.date}} </h2>
-    <a [routerLink] ="['entry', oneEntry._id]">
+    <a [routerLink] ="['journal-entries', oneEntry._id]">
       View Content
     </a>
   </div>
-</div> -->
+</div>

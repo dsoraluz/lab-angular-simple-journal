@@ -1,0 +1,20 @@
+
+<h1> My Ironhack Journal </h1>
+
+<a routerLink="/">Back to Entry List</a>
+<div *ngIf="entry">
+  <div class="entry-header">
+    <h2> {{ entry.title }}</h2>
+    <h3> {{ entry.date }}</h3>
+
+  </div>
+  <div class="entry-content">
+    <p>
+      {{ entry.content }}
+    </p>
+
+    <button (click)="deleteEntry()">
+      Delete This Entry
+    </button>
+  </div>
+</div>

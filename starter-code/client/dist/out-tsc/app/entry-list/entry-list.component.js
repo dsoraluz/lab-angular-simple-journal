@@ -19,6 +19,7 @@ var EntryListComponent = (function () {
         var _this = this;
         this.myJournalService.getEntries()
             .then(function (entriesList) {
+            _this.entries = entriesList;
         })
             .catch(function (err) {
             _this.errorMessage = 'There was an error. Try Again later.';
